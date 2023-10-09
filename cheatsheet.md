@@ -16,8 +16,14 @@
     * Config views folder (only for src)
     * Add main layout
     * Add partials folder
+    * Fix header nav to home
     * Render home page
 7. Add controllers folder with home controller
 8. Add Database
     * Install mongoose
     * Connect db
+9.Authentication
+    * Add user controller
+    * Add the controller to routes
+    * Fix header nav to login,register and logout
+    * Render login page
