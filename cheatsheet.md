@@ -27,3 +27,4 @@
     * Add the controller to routes
     * Fix header nav to login,register and logout
     * Render login page
+    * Render register page
