@@ -29,3 +29,7 @@
     * Render login page
     * Render register page
 10. Add user model
+11. Add user services/manager
+    * Add login and register methods (empty)
+    * require userService in userController
+11. Modify login and register forms in html
