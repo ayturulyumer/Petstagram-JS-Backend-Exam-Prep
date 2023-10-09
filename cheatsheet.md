@@ -18,3 +18,6 @@
     * Add partials folder
     * Render home page
 7. Add controllers folder with home controller
+8. Add Database
+    * Install mongoose
+    * Connect db
