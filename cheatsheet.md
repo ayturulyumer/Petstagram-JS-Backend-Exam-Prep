@@ -22,9 +22,10 @@
 8. Add Database
     * Install mongoose
     * Connect db
-9.Authentication
+9.Authentication views
     * Add user controller
     * Add the controller to routes
     * Fix header nav to login,register and logout
     * Render login page
     * Render register page
+10. Add user model
