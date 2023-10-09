@@ -9,7 +9,6 @@
 - Add routes
 
 4. Add static resources (css/images) 
-    * Install path
 5. Add view folder with ready htmls
 6. Add view engine (express-handlebars)
     * Install handlebars
@@ -18,3 +17,4 @@
     * Add main layout
     * Add partials folder
     * Render home page
+7. Add controllers folder with home controller
