@@ -7,5 +7,6 @@ exports.register = async (userData) => {
   if (user) {
     throw new Error("Username already exists !");
   }
-  User.create(userData);
+
+  return User.create(userData);
 };
