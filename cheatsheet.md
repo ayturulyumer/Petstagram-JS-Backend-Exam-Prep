@@ -48,3 +48,7 @@
     * Generate the token 
         * Create payload
         * Generate secret
+17. Return the generated token in cookie
+    * Install cookie-parser
+    * Config cookie-parser in index.js
+    * Set the token as cookie and redirect to home page
