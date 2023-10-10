@@ -39,3 +39,12 @@
 14. Hash password
     * Install bcrypt
     * Hash password in model layer pre save
+15. Login 
+    * Find user and throw error if not found
+    * Compare passwords with bcrypt compare and throw error if they don't match
+16. Generate JWT token
+    * Install jwt
+    * Promisify jsonwebtoken (it's optional ,but it's a good practice to make it asynchronous)
+    * Generate the token 
+        * Create payload
+        * Generate secret
