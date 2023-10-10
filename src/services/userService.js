@@ -5,7 +5,9 @@ const { SECRET } = require("../constants.js");
 
 exports.login = async (username, password) => {
   // find user
+
   const user = await User.findOne({ username });
+
 
   if (!user) {
     throw new Error("Invalid username or password !");
