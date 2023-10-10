@@ -35,4 +35,4 @@
 12. Add register and login post actions in userController
 13. Add user service/manager
     * Require userService in userController
-    * Add register method in userService
+    * Add register method in userService with validation for unique username
