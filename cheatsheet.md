@@ -52,3 +52,5 @@
     * Install cookie-parser
     * Config cookie-parser in index.js
     * Set the token as cookie and redirect to home page
+18.Logout
+    * Clear cookie and redirect to home page
