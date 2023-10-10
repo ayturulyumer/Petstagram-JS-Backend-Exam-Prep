@@ -54,3 +54,6 @@
     * Set the token as cookie and redirect to home page
 18.Logout
     * Clear cookie and redirect to home page
+19. Create authentication middleware
+    * configure auth middleware in index.js
+    * implement auth middleware 
