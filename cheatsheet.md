@@ -36,3 +36,6 @@
 13. Add user service/manager
     * Require userService in userController
     * Add register method in userService with validation for unique username
+14. Hash password
+    * Install bcrypt
+    * Hash password in model layer pre save
