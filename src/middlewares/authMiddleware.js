@@ -5,10 +5,12 @@ exports.auth = async (req, res, next) => {
   const token = req.cookies["token"];
 
   if (token) {
-    try {
+    try {   
       const decodedToken = await jwt.verify(token, SECRET);
       // set the token to req.user
       req.user = decodedToken;
+      res.locals.user = decodedToken;
+      res.locals.isAuthenticated = true;
       next();
     } catch (err) {
       res.clearCookie("token");
