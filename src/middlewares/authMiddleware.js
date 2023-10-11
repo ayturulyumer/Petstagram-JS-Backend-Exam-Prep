@@ -12,9 +12,16 @@ exports.auth = async (req, res, next) => {
       next();
     } catch (err) {
       res.clearCookie("token");
-      res.redirect("/users/login")
+      res.redirect("/users/login");
     }
   } else {
     next();
   }
+};
+
+exports.isAuth = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/users/login");
+  }
+  next();
 };

@@ -57,3 +57,5 @@
 19. Create authentication middleware
     * configure auth middleware in index.js
     * implement auth middleware 
+        * attach decoded token to req
+        * handle invalid token
