@@ -74,3 +74,10 @@
     * Pass error to render
     * Add local error handlers
 24.Add photo Model
+25.Add create photo page 
+    * Create photos folder in views
+    * Add create/details and edit html to the folder  and change their extenstions to hbs
+    * Trim the html,change the form method to POST and fill the empty name with the relevant name [// name="age"] 
+    * Fix the href to create photo page in main layout
+26.Create Photo controller
+    * Add the controller to the routes.js
