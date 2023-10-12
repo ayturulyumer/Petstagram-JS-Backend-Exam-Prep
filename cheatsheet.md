@@ -59,3 +59,10 @@
     * implement auth middleware 
         * attach decoded token to req
         * handle invalid token
+20. Authorization middleware
+21. Dynamic navigation
+    * Add conditional in main layout
+    * Add res.locals to auth middleware
+22. Error handling
+    * Add 404 page
+    * Redirect missing routes to 404
