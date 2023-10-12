@@ -73,3 +73,4 @@
     * Show error container conditionally
     * Pass error to render
     * Add local error handlers
+24.Add photo Model
