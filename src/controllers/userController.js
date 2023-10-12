@@ -24,8 +24,12 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
   const userData = req.body;
-  await userService.register(userData);
-  res.redirect("/users/login");
+  try {
+    await userService.register(userData);
+    res.redirect("/users/login");
+  }catch(err){
+    res.render("users/register",{error: getErrorMessage(err)})
+  }
 });
 
 router.get("/logout", (req, res) => {
