@@ -10,6 +10,7 @@ exports.auth = async (req, res, next) => {
       // set the token to req.user
       req.user = decodedToken;
       res.locals.user = decodedToken;
+      // for conditional in main layout
       res.locals.isAuthenticated = true;
       next();
     } catch (err) {
