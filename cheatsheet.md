@@ -66,3 +66,9 @@
 22. Error handling
     * Add 404 page
     * Redirect missing routes to 404
+    * Add global error handler (opt)
+    * Add error message extractor
+23.Show error notifications
+    * Add error container to main layout
+    * Show error container conditionally
+    * Pass error to render
