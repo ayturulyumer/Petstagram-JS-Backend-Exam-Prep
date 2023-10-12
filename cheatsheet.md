@@ -81,3 +81,8 @@
     * Fix the href to create photo page in main layout
 26.Create Photo controller
     * Add the controller to the routes.js
+27.Create Photo service
+
+
+//TODO 
+Add catalog 

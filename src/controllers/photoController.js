@@ -7,8 +7,11 @@ router.get("/create", (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  const photoData = req.body;
-  try {
+  const photoData = {
+    ...req.body,
+    owner:req.user._id,
+  }
+  try{
     await photoService.create(photoData);
     res.redirect("/photos");
   } catch (err) {
