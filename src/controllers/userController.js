@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userService = require("../services/userService.js");
+const { getErrorMessage } = require("../utils/errorHelpers.js");
 
 router.get("/login", (req, res) => {
   res.render("users/login");
@@ -7,10 +8,14 @@ router.get("/login", (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const token = await userService.login(username, password);
+  try {
+    const token = await userService.login(username, password);
 
-  res.cookie("token", token);
-  res.redirect("/");
+    res.cookie("token", token);
+    res.redirect("/");
+  } catch (err) {
+    res.render("users/login", { error: getErrorMessage(err) });
+  }
 });
 
 router.get("/register", (req, res) => {
@@ -23,9 +28,9 @@ router.post("/register", async (req, res) => {
   res.redirect("/users/login");
 });
 
-router.get("/logout",(req,res) => {
-  res.clearCookie("token")
-  res.redirect("/")
-})
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/");
+});
 
 module.exports = router;

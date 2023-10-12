@@ -72,3 +72,4 @@
     * Add error container to main layout
     * Show error container conditionally
     * Pass error to render
+    * Add local error handlers
