@@ -89,4 +89,5 @@
 29. Add details page
     * Render the page in photoController
     * Get the post Id
-    * Make 
+    * Create getOnePost service in services
+    * Add edit/delete buttons conditionally
