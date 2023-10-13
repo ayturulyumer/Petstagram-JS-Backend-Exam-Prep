@@ -3,7 +3,7 @@ const photoService = require("../services/photoService.js");
 const { getErrorMessage } = require("../utils/errorHelpers.js");
 
 router.get("/", async (req, res) => {
-  const posts = await photoService.getPosts()
+  const posts = await photoService.getPosts().lean()
   res.render("photos", { posts });
 });
 
