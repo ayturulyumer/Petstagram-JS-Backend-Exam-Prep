@@ -86,3 +86,7 @@
     * Make the post partial view
     * Change catalog hbs to index hbs and put it inside the photos folder so router.get("/") will ref to it by default
     * Add get all posts service to return all posts from database and populate it with owner object
+29. Add details page
+    * Render the page in photoController
+    * Get the post Id
+    * Make 

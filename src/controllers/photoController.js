@@ -3,7 +3,7 @@ const photoService = require("../services/photoService.js");
 const { getErrorMessage } = require("../utils/errorHelpers.js");
 
 router.get("/", async (req, res) => {
-  const posts = await photoService.getPosts().lean()
+  const posts = await photoService.getAllPosts().lean();
   res.render("photos", { posts });
 });
 
@@ -12,16 +12,23 @@ router.get("/create", (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  const photoData = {
+  const postData = {
     ...req.body,
     owner: req.user._id,
   };
   try {
-    await photoService.create(photoData);
+    await photoService.create(postData);
     res.redirect("/photos");
   } catch (err) {
     res.render("photos/create", { error: getErrorMessage(err) });
   }
+});
+
+router.get("/details/:postId", async (req, res) => {
+  const postId = req.params.postId
+  const post = await photoService.getOnePost(postId)
+  console.log(post)
+  res.render("photos/details")
 });
 
 module.exports = router;
