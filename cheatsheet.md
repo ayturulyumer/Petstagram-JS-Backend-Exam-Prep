@@ -82,7 +82,7 @@
 26.Create Photo controller
     * Add the controller to the routes.js
 27.Create Photo service
-
-
-//TODO 
-Add catalog 
+28.Add Catalog page with dynamic data
+    * Make the post partial view
+    * Change catalog hbs to index hbs and put it inside the photos folder so router.get("/") will ref to it by default
+    * Add get all posts service to return all posts from database and lean it
