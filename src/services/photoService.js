@@ -1,7 +1,9 @@
 const Photo = require("../models/Photo.js");
 
-exports.create = (photoData) => {
-  Photo.create(photoData);
+exports.create = (postData) => {
+  Photo.create(postData);
 };
 
-exports.getPosts = () => Photo.find().populate("owner");
+exports.getAllPosts = () => Photo.find().populate("owner");
+
+exports.getOnePost = (postId) => Photo.findById(postId)
