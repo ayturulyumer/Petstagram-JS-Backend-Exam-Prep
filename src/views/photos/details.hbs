@@ -30,20 +30,17 @@
                                 <!-- photo's location -->
                                 <span>{{post.location}}</span>
 
-                                <!-- IF the viewer is the creator of the photo -->
+                               {{#if isOwner}}
                                 <div class="edit-delete-btns">
-
-                                    <!-- Edit Pet Photo -->
                                     <a href="#">
-                                        <img class="edit-img" src="/static/images/edit-pen-icon-6.jpg"
+                                        <img class="edit-img" src="/images/edit-pen-icon-6.jpg"
                                             alt="edit button">
                                     </a>
-
-                                    <!--Delete Pet Photo -->
                                     <a href="#">
-                                        <img class="bin-img" src="/static/images/icon-remove-22.jpg" alt="bin button">
+                                        <img class="bin-img" src="/images/icon-remove-22.jpg" alt="bin button">
                                     </a>
                                 </div>
+                               {{/if}}
 
                             </h3>
                         </div>
