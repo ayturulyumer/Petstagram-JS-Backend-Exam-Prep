@@ -25,10 +25,10 @@ router.post("/create", async (req, res) => {
 });
 
 router.get("/details/:postId", async (req, res) => {
-  const postId = req.params.postId
-  const post = await photoService.getOnePost(postId)
-  console.log(post)
-  res.render("photos/details")
+  const postId = req.params.postId;
+  const post = await photoService.getOnePost(postId).lean();
+  console.log(post);
+  res.render("photos/details", { post });
 });
 
 module.exports = router;

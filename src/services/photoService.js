@@ -6,4 +6,4 @@ exports.create = (postData) => {
 
 exports.getAllPosts = () => Photo.find().populate("owner");
 
-exports.getOnePost = (postId) => Photo.findById(postId)
+exports.getOnePost = (postId) => Photo.findById(postId).populate("owner")
