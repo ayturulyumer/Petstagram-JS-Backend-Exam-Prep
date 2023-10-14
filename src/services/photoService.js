@@ -18,3 +18,9 @@ exports.updateOnePost = (postId, postData) => {
   const post = Photo.findByIdAndUpdate(postId, postData, { new: true });
   return post;
 };
+
+exports.addComment = async (postId, commentData) => {
+  const post = await  Photo.findById(postId);
+  post.comments.push(commentData);
+  return post.save();
+};
