@@ -66,13 +66,14 @@
 22. Error handling
     * Add 404 page
     * Redirect missing routes to 404
-    * Add global error handler (opt)
     * Add error message extractor
 23.Show error notifications
     * Add error container to main layout
     * Show error container conditionally
     * Pass error to render
     * Add local error handlers
+
+
 24.Add photo Model
 25.Add create photo page 
     * Create photos folder in views
@@ -91,3 +92,5 @@
     * Get the post Id
     * Create getOnePost service in services
     * Add edit/delete buttons conditionally
+30. Add edit page
+31.Add comments
