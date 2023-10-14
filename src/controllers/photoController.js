@@ -58,10 +58,23 @@ router.post("/details/:postId/edit", async (req, res) => {
   const post = req.body;
   try {
     const updatedPost = await photoService.updateOnePost(postId, post);
-    await updatedPost.save()
+    await updatedPost.save();
     res.redirect(`/photos/details/${postId}`);
   } catch (err) {
     res.render(`photos/edit`, { post, error: getErrorMessage(err) });
+  }
+});
+
+router.post("/details/:postId/comments", async (req, res) => {
+  const postId = req.params.postId;
+  const { message } = req.body;
+  const userId = req.user._id;
+
+  try {
+    await photoService.addComment(postId, { userId, message });
+    res.redirect(`/photos/details/${postId}`);
+  } catch (err) {
+    res.render("photos/details", { error: getErrorMessage(err) });
   }
 });
 
