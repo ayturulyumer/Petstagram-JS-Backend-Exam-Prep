@@ -33,8 +33,12 @@ router.get("/details/:postId", async (req, res) => {
 
 router.get("/details/:postId/delete", async (req, res) => {
   const postId = req.params.postId;
-  await photoService.deleteOnePost(postId);
-  res.redirect("/photos");
+  try {
+    await photoService.deleteOnePost(postId);
+    res.redirect("/photos");
+  }catch(err){
+    res.render(`/photos/details/${postId}` , {error: "Unsuccessfull attempt to delete the post!"})
+  }
 });
 
 router.get("/details/:postId/edit", async (req, res) => {
