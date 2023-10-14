@@ -69,51 +69,10 @@
                         </div>
                         <div class="comments">
                             <div class="comments-top">
-                                <div class="userDetails">
-                                    <div class="comment-data">
-                                        <div class="profilepic">
-                                            <div class="profile_img">
-                                                <div class="image">
-                                                    <!-- User Profile Image -->
-                                                    <img src="/images/person.png" alt="img8">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--User's username-->
-                                        <p><b>StevIvanov</b>- OMG where can i get one</p>
-                                    </div>
-                                </div>
-                                <div class="userDetails">
-                                    <div class="comment-data">
-                                        <div class="profilepic">
-                                            <div class="profile_img">
-                                                <div class="image">
-                                                    <!-- User Profile Image -->
-                                                    <img src="/images/person.png" alt="img8">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--User's username-->
-                                        <p><b>StevIvanov</b>- OMG where can i get one</p>
-                                    </div>
-                                </div>
-                                <div class="userDetails">
-                                    <div class="comment-data">
-                                        <div class="profilepic">
-                                            <div class="profile_img">
-                                                <div class="image">
-                                                    <!-- User Profile Image -->
-                                                    <img src="/images/person.png" alt="img8">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!--User's username-->
-                                        <p><b>StevIvanov</b>- OMG where can i get one</p>
-                                    </div>
-                                </div>
+                                {{#each post.comments}}
+                                {{>comment}}
+                                {{/each}}
+                             
                             </div>
                         </div>
                     </div>
