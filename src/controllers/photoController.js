@@ -28,7 +28,14 @@ router.get("/details/:postId", async (req, res) => {
   const postId = req.params.postId;
   const post = await photoService.getOnePost(postId).lean();
   const isOwner = req.user._id == post.owner._id;
-  res.render("photos/details", { post , isOwner });
+  res.render("photos/details", { post, isOwner });
+});
+
+router.get("/details/:postId/delete", async (req, res) => {
+  const postId = req.params.postId;
+  console.log(postId);
+  await photoService.deleteOnePost(postId);
+  res.redirect("/photos");
 });
 
 module.exports = router;
