@@ -36,23 +36,33 @@ router.get("/details/:postId/delete", async (req, res) => {
   try {
     await photoService.deleteOnePost(postId);
     res.redirect("/photos");
-  }catch(err){
-    res.render(`/photos/details/${postId}` , {error: "Unsuccessfull attempt to delete the post!"})
+  } catch (err) {
+    res.render(`/photos/details/${postId}`, {
+      error: "Unsuccessfull attempt to delete the post!",
+    });
   }
 });
 
 router.get("/details/:postId/edit", async (req, res) => {
   const postId = req.params.postId;
-  const post = await photoService.getOnePost(postId).lean();
-  res.render("photos/edit", { post });
+  try {
+    const post = await photoService.getOnePost(postId).lean();
+    res.render("photos/edit", { post });
+  } catch (err) {
+    res.render("photos/edit", { error: getErrorMessage(err) });
+  }
 });
 
 router.post("/details/:postId/edit", async (req, res) => {
   const postId = req.params.postId;
-  const postData = req.body;
-  const updatedPost = await photoService.updateOnePost(postId, postData);
-  updatedPost.save();
-  res.redirect(`/photos/details/${postId}`)
+  const post = req.body;
+  try {
+    const updatedPost = await photoService.updateOnePost(postId, post);
+    await updatedPost.save()
+    res.redirect(`/photos/details/${postId}`);
+  } catch (err) {
+    res.render(`photos/edit`, { post, error: getErrorMessage(err) });
+  }
 });
 
 module.exports = router;
