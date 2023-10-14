@@ -20,7 +20,11 @@ exports.updateOnePost = (postId, postData) => {
 };
 
 exports.addComment = async (postId, commentData) => {
-  const post = await  Photo.findById(postId);
+  const post = await Photo.findById(postId);
   post.comments.push(commentData);
   return post.save();
+};
+
+exports.getByOwner = (userId) => {
+  return Photo.find({ owner: userId });
 };
