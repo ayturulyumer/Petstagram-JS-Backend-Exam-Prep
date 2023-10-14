@@ -9,3 +9,5 @@ exports.getAllPosts = () => Photo.find().populate("owner");
 exports.getOnePost = (postId) => Photo.findById(postId).populate("owner");
 
 exports.deleteOnePost = (postId) => Photo.findByIdAndDelete(postId);
+
+exports.updateOnePost = (postId,postData) => Photo.findByIdAndUpdate(postId,postData)
