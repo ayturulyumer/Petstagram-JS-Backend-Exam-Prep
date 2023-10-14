@@ -33,9 +33,22 @@ router.get("/details/:postId", async (req, res) => {
 
 router.get("/details/:postId/delete", async (req, res) => {
   const postId = req.params.postId;
-  console.log(postId);
   await photoService.deleteOnePost(postId);
   res.redirect("/photos");
+});
+
+router.get("/details/:postId/edit", async (req, res) => {
+  const postId = req.params.postId;
+  const post = await photoService.getOnePost(postId).lean();
+  res.render("photos/edit", { post });
+});
+
+router.post("/details/:postId/edit", async (req, res) => {
+  const postId = req.params.postId;
+  const postData = req.body;
+  const updatedPost = await photoService.updateOnePost(postId, postData);
+  updatedPost.save();
+  res.redirect(`/photos/details/${postId}`)
 });
 
 module.exports = router;
