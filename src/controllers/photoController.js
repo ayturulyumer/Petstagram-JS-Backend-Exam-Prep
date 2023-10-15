@@ -1,17 +1,18 @@
 const router = require("express").Router();
 const photoService = require("../services/photoService.js");
 const { getErrorMessage } = require("../utils/errorHelpers.js");
+const { isAuth } = require("../middlewares/authMiddleware.js");
 
 router.get("/", async (req, res) => {
   const posts = await photoService.getAllPosts().lean();
   res.render("photos", { posts });
 });
 
-router.get("/create", (req, res) => {
+router.get("/create", isAuth, (req, res) => {
   res.render("photos/create");
 });
 
-router.post("/create", async (req, res) => {
+router.post("/create", isAuth, async (req, res) => {
   const postData = {
     ...req.body,
     owner: req.user._id,
@@ -26,14 +27,20 @@ router.post("/create", async (req, res) => {
 
 router.get("/details/:postId", async (req, res) => {
   const postId = req.params.postId;
-  const post = await photoService.getOnePost(postId).populate("comments.user").lean();
+  console.log(req.owner)
+  const post = await photoService
+    .getOnePost(postId)
+    .populate("comments.user")
+    .lean();
   const isOwner = req.user?._id == post.owner._id;
   res.render("photos/details", { post, isOwner });
 });
 
-router.get("/details/:postId/delete", async (req, res) => {
+router.get("/details/:postId/delete", isAuth, async (req, res) => {
   const postId = req.params.postId;
+  
   try {
+    if(req.user._id)
     await photoService.deleteOnePost(postId);
     res.redirect("/photos");
   } catch (err) {
@@ -43,7 +50,7 @@ router.get("/details/:postId/delete", async (req, res) => {
   }
 });
 
-router.get("/details/:postId/edit", async (req, res) => {
+router.get("/details/:postId/edit", isAuth, async (req, res) => {
   const postId = req.params.postId;
   try {
     const post = await photoService.getOnePost(postId).lean();
@@ -53,7 +60,7 @@ router.get("/details/:postId/edit", async (req, res) => {
   }
 });
 
-router.post("/details/:postId/edit", async (req, res) => {
+router.post("/details/:postId/edit", isAuth, async (req, res) => {
   const postId = req.params.postId;
   const post = req.body;
   try {
@@ -65,7 +72,7 @@ router.post("/details/:postId/edit", async (req, res) => {
   }
 });
 
-router.post("/details/:postId/comments", async (req, res) => {
+router.post("/details/:postId/comments", isAuth, async (req, res) => {
   const postId = req.params.postId;
   const { message } = req.body;
   const user = req.user._id;
