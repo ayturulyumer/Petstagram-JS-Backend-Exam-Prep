@@ -22,6 +22,9 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.virtual("repeatPassword").set(function (value) {
+  if(!value){
+    throw new Error("Repeat password is required !")
+  }
   if (this.password !== value) {
     throw new Error("Password missmatch !");
   }
