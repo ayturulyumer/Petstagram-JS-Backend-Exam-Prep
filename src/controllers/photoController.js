@@ -27,7 +27,6 @@ router.post("/create", isAuth, async (req, res) => {
 
 router.get("/details/:postId", async (req, res) => {
   const postId = req.params.postId;
-  console.log(req.owner)
   const post = await photoService
     .getOnePost(postId)
     .populate("comments.user")
@@ -38,7 +37,6 @@ router.get("/details/:postId", async (req, res) => {
 
 router.get("/details/:postId/delete", isAuth, async (req, res) => {
   const postId = req.params.postId;
-  
   try {
     if(req.user._id)
     await photoService.deleteOnePost(postId);
@@ -52,9 +50,14 @@ router.get("/details/:postId/delete", isAuth, async (req, res) => {
 
 router.get("/details/:postId/edit", isAuth, async (req, res) => {
   const postId = req.params.postId;
+
   try {
     const post = await photoService.getOnePost(postId).lean();
-    res.render("photos/edit", { post });
+    if(req.user._id == post.owner._id){
+      res.render("photos/edit", { post });
+    } else {
+      res.redirect("/404")
+    }
   } catch (err) {
     res.render("photos/edit", { error: getErrorMessage(err) });
   }
