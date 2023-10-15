@@ -94,3 +94,8 @@
     * Add edit/delete buttons conditionally
 30. Add edit page
 31.Add comments
+32. Add Profile page
+33.Add extra validations to register in User model
+    
+
+// TODO Validations and route guards
