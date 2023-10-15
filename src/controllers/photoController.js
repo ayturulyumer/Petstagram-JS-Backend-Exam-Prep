@@ -38,9 +38,13 @@ router.get("/details/:postId", async (req, res) => {
 router.get("/details/:postId/delete", isAuth, async (req, res) => {
   const postId = req.params.postId;
   try {
-    if(req.user._id)
-    await photoService.deleteOnePost(postId);
-    res.redirect("/photos");
+    const post = await photoService.getOnePost(postId).lean()
+    if(req.user._id == post.owner._id){
+      await photoService.deleteOnePost(postId);
+      res.redirect("/photos");
+    } else{
+      res.redirect("/404")
+    }
   } catch (err) {
     res.render(`/photos/details/${postId}`, {
       error: "Unsuccessfull attempt to delete the post!",
